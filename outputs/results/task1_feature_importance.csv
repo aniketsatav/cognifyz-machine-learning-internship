@@ -1,0 +1,279 @@
+Feature,Importance
+num__Votes,0.5241110009230788
+num__Longitude,0.12887500003239716
+num__Latitude,0.1065154856863149
+num__Average Cost for two,0.05492667840360527
+cat__Country Code_1,0.04255627246643327
+cat__Primary Cuisine_North Indian,0.015118200000886395
+cat__Primary Cuisine_American,0.008742945125715674
+cat__Primary Cuisine_Chinese,0.007999869755582605
+cat__Country Code_30,0.007243344734080402
+num__Price range,0.00705027126312552
+cat__Primary Cuisine_Pizza,0.006440068662793466
+cat__Has Online delivery_No,0.005076164051681829
+cat__Has Online delivery_Yes,0.004927145687823704
+cat__Primary Cuisine_Cafe,0.00459862514522588
+cat__Primary Cuisine_Italian,0.004485436836866345
+cat__Primary Cuisine_South Indian,0.004456273080482122
+cat__Primary Cuisine_Bakery,0.0026095996428158546
+cat__Primary Cuisine_Fast Food,0.002583696106913644
+cat__Primary Cuisine_Continental,0.002538678838532493
+cat__City_New Delhi,0.002403181238777486
+cat__Has Table booking_No,0.002194252980745969
+cat__Primary Cuisine_Ice Cream,0.0021100094377150365
+cat__Has Table booking_Yes,0.0019389217691847343
+cat__Primary Cuisine_Asian,0.0017681627909147915
+cat__City_Rio de Janeiro,0.0016922671336860459
+cat__Primary Cuisine_Biryani,0.00149756964315273
+cat__Primary Cuisine_Desserts,0.001492561559300049
+cat__Primary Cuisine_Mughlai,0.0014334550686649359
+cat__City_Noida,0.0013086505750084913
+cat__City_Gurgaon,0.001205778373320625
+cat__City_Montville,0.001198819678555681
+cat__Primary Cuisine_Burger,0.0011773457460740617
+cat__Primary Cuisine_Lucknowi,0.0011752344447341556
+cat__City_Puducherry,0.0011744014634869503
+cat__Primary Cuisine_Modern Indian,0.0011618829394709252
+cat__City_Ghaziabad,0.0011084553826743936
+cat__Primary Cuisine_Finger Food,0.0010723265485531983
+cat__Primary Cuisine_Beverages,0.0009404713854516569
+cat__Primary Cuisine_Lebanese,0.0008830337845557183
+cat__Primary Cuisine_Street Food,0.000841677633471736
+cat__Primary Cuisine_Mexican,0.0008366837290218147
+cat__Primary Cuisine_European,0.0007983791735605512
+cat__Primary Cuisine_Seafood,0.0007723469262068593
+cat__Primary Cuisine_Healthy Food,0.0006635938141487477
+cat__Primary Cuisine_Mithai,0.0006569159939022402
+cat__City_Faridabad,0.000533607440158003
+cat__Is delivering now_Yes,0.0005312747385166168
+cat__City_Guwahati,0.0005204556030686112
+cat__City_Gainesville,0.0005162172781627132
+cat__Country Code_208,0.000506733094895876
+cat__Primary Cuisine_Indian,0.00048047205747579557
+cat__Primary Cuisine_Turkish,0.00047670702379937923
+cat__Primary Cuisine_Tibetan,0.0004759800104009374
+cat__City_Nagpur,0.000458828565442324
+cat__City_Sharjah,0.0004462393999775262
+cat__City_Ankara,0.000444918410243173
+cat__Is delivering now_No,0.00044320351956264565
+cat__Primary Cuisine_Coffee and Tea,0.0004378404507182632
+cat__Primary Cuisine_Southern,0.0004305965833639536
+cat__Primary Cuisine_Thai,0.0004265583120929487
+cat__Primary Cuisine_French,0.0003910876741126442
+cat__Country Code_215,0.0003590090759893718
+cat__Country Code_216,0.00035813292628623775
+cat__City_Jaipur,0.00035273182450885573
+cat__Primary Cuisine_Japanese,0.00035006582865178824
+cat__City_Vizag,0.000343683196862321
+cat__Primary Cuisine_Breakfast,0.0003289035059624143
+cat__Primary Cuisine_Mediterranean,0.0003263905844943945
+cat__City_Mangalore,0.00032160090111278363
+cat__City_Dehradun,0.0003195084329498642
+cat__Primary Cuisine_Persian,0.00031938209386174476
+cat__City_Bogor,0.00031226977639943633
+cat__City_Aurangabad,0.0002911057347449363
+cat__City_Dalton,0.00028435431847119
+cat__Primary Cuisine_Patisserie,0.00027785528061636925
+cat__City_Nashik,0.0002728356491160484
+cat__Primary Cuisine_Kerala,0.0002579902424577378
+cat__Primary Cuisine_Hyderabadi,0.00025631512875130553
+cat__City_London,0.0002534991153551407
+cat__City_Colombo,0.00025137904854048845
+cat__Primary Cuisine_Brazilian,0.00024941170512687616
+cat__City_Pensacola,0.0002487555568769646
+cat__Primary Cuisine_Gujarati,0.00024606581165429354
+cat__City_Allahabad,0.0002442614837048781
+cat__City_Mysore,0.0002394991779616652
+cat__City_Savannah,0.00023119832282602712
+cat__City_Davenport,0.0002307719058915037
+cat__Country Code_214,0.00022862460906489474
+cat__City_Agra,0.00022763378693577065
+cat__Country Code_191,0.0002171229765054303
+cat__City_Valdosta,0.00021461307213875534
+cat__City_Goa,0.00021274831169496817
+cat__Primary Cuisine_Raw Meats,0.00020170211806276548
+cat__City_Indore,0.00019052430117690803
+cat__City_Amritsar,0.0001892803403016516
+cat__City_Ahmedabad,0.00018395853914732782
+cat__City_Bhubaneshwar,0.00017734702972451428
+cat__Country Code_166,0.00017586272763727508
+cat__City_Inner City,0.000174658305140806
+cat__Country Code_14,0.00016980122083909102
+cat__Primary Cuisine_Contemporary,0.00016924489871532051
+cat__City_Dubai,0.00016770465127788163
+cat__Primary Cuisine_Juices,0.00016494964294198035
+cat__City_Doha,0.0001643147785435559
+cat__City_Bhopal,0.00016026984093376188
+cat__Primary Cuisine_Malaysian,0.000159038294802615
+cat__City_Mc Millan,0.0001584732321719208
+cat__Primary Cuisine_Steak,0.00015659209712398178
+cat__City_Hyderabad,0.00014999221755902662
+cat__Primary Cuisine_International,0.0001492782921527121
+cat__City_Ranchi,0.00014473073341443433
+cat__City_Chandigarh,0.00014465655404516443
+cat__Primary Cuisine_World Cuisine,0.0001401470430338977
+cat__City_Coimbatore,0.00013976346511703166
+cat__Country Code_148,0.00013908765766674821
+cat__Country Code_189,0.0001376934881937223
+cat__City_Macon,0.00013606796070570672
+cat__City_Mumbai,0.00013068550488221415
+cat__Primary Cuisine_Sushi,0.00012860424644493853
+cat__Primary Cuisine_Salad,0.00012830381006875968
+cat__City_Vadodara,0.00011999596381900093
+cat__City_Varanasi,0.00011989120172004619
+cat__City_Patna,0.0001144153899161889
+cat__City_Birmingham,0.0001141228845862001
+cat__Primary Cuisine_Singaporean,0.00011376923298524202
+cat__City_Lucknow,0.00011180580963633992
+cat__Primary Cuisine_Kebab,0.00010684056891307275
+cat__City_Abu Dhabi,0.00010141924742289199
+cat__Primary Cuisine_Bar Food,0.00010041769799854969
+cat__Country Code_162,9.744647491623072e-05
+cat__City_Cape Town,9.73377422264415e-05
+cat__Primary Cuisine_Modern Australian,9.705447767332023e-05
+cat__City_Pretoria,9.630231029000087e-05
+cat__Primary Cuisine_BBQ,9.577831068393138e-05
+cat__City_Augusta,9.567279745834185e-05
+cat__City_Dubuque,9.523085412371149e-05
+cat__City_��stanbul,9.138358713040957e-05
+cat__City_Manchester,8.799487199988381e-05
+cat__City_Surat,8.483166305215654e-05
+cat__City_Bangalore,7.708043961789667e-05
+cat__Primary Cuisine_Tapas,7.675317261745336e-05
+cat__Primary Cuisine_British,7.539859495143255e-05
+cat__City_S��o Paulo,7.461040316129607e-05
+cat__City_Chennai,7.299616930341401e-05
+cat__City_Ludhiana,7.175291914576837e-05
+cat__Country Code_184,7.066166903497421e-05
+cat__City_Sandton,7.043654454606041e-05
+cat__Primary Cuisine_Middle Eastern,6.984818440279933e-05
+cat__City_Singapore,6.886572820039756e-05
+cat__Primary Cuisine_Caribbean,6.773843324842361e-05
+cat__City_Jakarta,6.477304989785469e-05
+cat__Primary Cuisine_Korean,6.287994863048187e-05
+cat__City_Pocatello,6.244284450754992e-05
+cat__City_Paynesville,5.9536903809311674e-05
+cat__Primary Cuisine_Spanish,5.836866732220709e-05
+cat__City_Tampa Bay,5.7496569132565125e-05
+cat__City_Kanpur,5.737347828407394e-05
+cat__City_Orlando,5.696026009915462e-05
+cat__City_Pasay City,5.492411108623489e-05
+cat__City_Auckland,5.174622513143615e-05
+cat__City_Columbus,5.1722765444025245e-05
+cat__Primary Cuisine_Bengali,4.729099644973835e-05
+cat__Country Code_94,4.656063207816446e-05
+cat__City_Wellington City,4.645715612927919e-05
+cat__City_Athens,4.5582351514567425e-05
+cat__City_Mandaluyong City,4.489973141354665e-05
+cat__City_Bras�_lia,4.4408508352247266e-05
+cat__City_Cedar Rapids/Iowa City,4.288179456051308e-05
+cat__Primary Cuisine_Goan,4.138192662233672e-05
+cat__Primary Cuisine_Andhra,4.137688402395316e-05
+cat__City_Taguig City,4.119094013472193e-05
+cat__City_Johannesburg,4.079495556304634e-05
+cat__City_Kolkata,3.948932324296272e-05
+cat__City_Des Moines,3.938936098135827e-05
+cat__City_Edinburgh,3.8249369298156636e-05
+cat__Primary Cuisine_Pakistani,3.758735601462502e-05
+cat__Primary Cuisine_Parsi,3.573072364313182e-05
+cat__Primary Cuisine_Filipino,3.467223604090402e-05
+cat__Primary Cuisine_Taiwanese,3.230081610559395e-05
+cat__City_Albany,3.208625772581587e-05
+cat__City_Kochi,3.1503505103092476e-05
+cat__Primary Cuisine_Tea,3.118191151019456e-05
+cat__City_Pune,2.9928663024219236e-05
+cat__Primary Cuisine_Sunda,2.984735369915216e-05
+cat__Primary Cuisine_Sandwich,2.8779976461773957e-05
+cat__Primary Cuisine_African,2.859824385233313e-05
+cat__Primary Cuisine_Nepalese,2.7948410604870035e-05
+cat__City_Sioux City,2.5663801865091574e-05
+cat__Primary Cuisine_Asian Fusion,2.274874791835348e-05
+cat__City_Secunderabad,2.2676254402459122e-05
+cat__Primary Cuisine_German,2.157325314696206e-05
+cat__City_Mohali,2.12121187004136e-05
+cat__Primary Cuisine_Scottish,2.0794064077088268e-05
+cat__City_Phillip Island,2.04646899084009e-05
+cat__City_Hepburn Springs,1.8642208109733133e-05
+cat__Primary Cuisine_Unknown,1.8192028089519525e-05
+cat__City_Huskisson,1.8186441162032576e-05
+cat__Primary Cuisine_Restaurant Cafe,1.744930738830927e-05
+cat__Primary Cuisine_Kashmiri,1.6651532975720412e-05
+cat__City_Quezon City,1.635635102988576e-05
+cat__Primary Cuisine_Greek,1.48651934485498e-05
+cat__Primary Cuisine_Peranakan,1.4808095251417576e-05
+cat__Primary Cuisine_Western,1.4799553351534851e-05
+cat__Primary Cuisine_Tex-Mex,1.4631020726330118e-05
+cat__City_Rest of Hawaii,1.4404943966951678e-05
+cat__Primary Cuisine_Latin American,1.4270586997848573e-05
+cat__Primary Cuisine_Rajasthani,1.3882129798530068e-05
+cat__City_Middleton Beach,1.3702937938057908e-05
+cat__City_Vernonia,1.2906174677545934e-05
+cat__Primary Cuisine_Maharashtrian,1.2838196504554849e-05
+cat__City_Tangerang,1.2734994116031435e-05
+cat__City_Clatskanie,1.2408608057216364e-05
+cat__Primary Cuisine_Hawaiian,1.18777046650732e-05
+cat__Primary Cuisine_Peruvian,1.1631511478981777e-05
+cat__Primary Cuisine_Cuban,1.1460695741179404e-05
+cat__City_Mayfield,1.1228916466839292e-05
+cat__City_Bandung,1.1111538736077146e-05
+cat__Primary Cuisine_Portuguese,1.0177297949900242e-05
+cat__Primary Cuisine_Bihari,9.845603970671103e-06
+cat__Primary Cuisine_Awadhi,9.083055104061365e-06
+cat__Primary Cuisine_Vietnamese,8.739545543734762e-06
+cat__Primary Cuisine_Gourmet Fast Food,8.268780225199042e-06
+cat__Primary Cuisine_Naga,8.165796511056517e-06
+cat__City_Lorn,8.071950070852342e-06
+cat__Primary Cuisine_Indonesian,8.024014083598638e-06
+cat__City_Flaxton,7.977156529659504e-06
+cat__City_Pasig City,7.640234513387347e-06
+cat__City_Balingup,6.355651325602928e-06
+cat__City_San Juan City,6.098251433731608e-06
+cat__Primary Cuisine_Arabian,6.003165225435256e-06
+cat__Primary Cuisine_North Eastern,5.7661088316518445e-06
+cat__Primary Cuisine_Pub Food,5.626028471367754e-06
+cat__Primary Cuisine_Turkish Pizza,5.572025109775055e-06
+cat__City_Victor Harbor,5.442744730867651e-06
+cat__City_Beechworth,5.441043930747841e-06
+cat__City_Santa Rosa,5.414310176564441e-06
+cat__Primary Cuisine_Oriya,5.3224698999835175e-06
+cat__City_East Ballina,5.143662590454562e-06
+cat__Country Code_37,5.105816534233907e-06
+cat__Primary Cuisine_Ramen,4.528306771877291e-06
+cat__City_Waterloo,4.033611065796463e-06
+cat__Primary Cuisine_Kiwi,3.931486718908448e-06
+cat__City_Boise,3.5013641480221453e-06
+cat__Primary Cuisine_Assamese,3.309492588478541e-06
+cat__Primary Cuisine_South American,2.56098084298985e-06
+cat__City_Ojo Caliente,2.492903626937339e-06
+cat__City_Makati City,2.466764788387665e-06
+cat__City_Vineland Station,2.197890454017584e-06
+cat__City_Randburg,2.1114483874293827e-06
+cat__Primary Cuisine_Cajun,2.109456930689743e-06
+cat__Primary Cuisine_New American,2.086530154834602e-06
+cat__Primary Cuisine_Grill,1.979135718549286e-06
+cat__City_Potrero,1.9319406317530845e-06
+cat__Primary Cuisine_Drinks Only,1.8854342285720912e-06
+cat__City_Armidale,1.8499252573995578e-06
+cat__City_Penola,1.709711554030289e-06
+cat__City_Palm Cove,1.5256738195365342e-06
+cat__Primary Cuisine_Malwani,1.5092904249243415e-06
+cat__City_Panchkula,1.4514905528791287e-06
+cat__City_Princeton,1.270718040368353e-06
+cat__City_Consort,1.2162297715657278e-06
+cat__Primary Cuisine_Afghani,1.2020033068894386e-06
+cat__City_Monroe,1.2013047253799533e-06
+cat__City_Tanunda,1.1756277465659924e-06
+cat__City_Dicky Beach,1.0668250394769765e-06
+cat__City_Lakes Entrance,1.0355488253683264e-06
+cat__Primary Cuisine_Argentine,9.113263623645858e-07
+cat__City_Macedon,9.100621086706961e-07
+cat__Primary Cuisine_Burmese,8.603728181910392e-07
+cat__Primary Cuisine_Charcoal Grill,7.906526601410428e-07
+cat__City_Inverloch,7.489042592537299e-07
+cat__City_Lakeview,5.559500893046387e-07
+cat__City_Fernley,5.499739619865319e-07
+cat__City_Chatham-Kent,4.212570786630339e-07
+cat__City_Weirton,2.660016108658474e-07
+cat__City_Lincoln,2.5336498338531075e-07
+cat__City_Cochrane,2.3715277715864148e-07
+cat__City_Yorkton,1.898214057800907e-07
