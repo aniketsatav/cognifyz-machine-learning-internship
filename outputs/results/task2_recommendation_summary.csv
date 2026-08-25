@@ -1,0 +1,11 @@
+Restaurant Name,City,Locality,Cuisines,Price range,Aggregate rating,Similarity Score
+Dilli Treat,new delhi,rajinder nagar,"north indian, south indian, chinese",2,4.2,0.48277798441256814
+Sagar Ratna,new delhi,defence colony,"south indian, north indian, chinese",2,4.0,0.45383849126427317
+Dilli BC,new delhi,malviya nagar,"north indian, mughlai",2,4.4,0.4255422421294341
+Nizam's Kathi Kabab,new delhi,malviya nagar,"north indian, fast food",2,4.0,0.4220188456163353
+Food Scouts,new delhi,janakpuri,"north indian, chinese, continental",2,4.3,0.4185790415685172
+London Street Kitchen,new delhi,rajinder nagar,"north indian, mughlai, chinese",2,4.2,0.40770349171145265
+The Culinary Pitaara,new delhi,defence colony,"north indian, chinese",2,4.2,0.40730902368066113
+Pipeline Cafe,new delhi,satyaniketan,"cafe, north indian, chinese, continental",2,4.0,0.391867980007794
+Indus Flavour,new delhi,delhi university-gtb nagar,"north indian, chinese, cafe",2,4.1,0.38928366230263234
+Food Scouts,new delhi,rajouri garden,"north indian, chinese, continental",2,4.4,0.37730011418310827
