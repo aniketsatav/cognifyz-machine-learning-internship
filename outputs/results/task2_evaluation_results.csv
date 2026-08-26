@@ -1,0 +1,4 @@
+recommendations,city_match,cuisine_match,price_match,rating_match,delivery_match
+10,True,True,True,True,True
+10,True,True,True,True,True
+5,True,True,True,True,

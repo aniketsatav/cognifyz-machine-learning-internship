@@ -1,0 +1,6 @@
+Test Case,Requested Cuisine,Requested City,Recommendations Returned
+North Indian - New Delhi,North Indian,New Delhi,10
+Chinese - Gurgaon,Chinese,Gurgaon,10
+Italian - New Delhi,Italian,New Delhi,5
+Restrictive Japanese,Japanese,New Delhi,0
+North Indian - Relaxed,North Indian,New Delhi,10
