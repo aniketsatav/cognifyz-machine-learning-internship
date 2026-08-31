@@ -1,0 +1,245 @@
+COGNIFYZ MACHINE LEARNING INTERNSHIP
+TASK 3 REPORT — CUISINE CLASSIFICATION
+Intern Name: Aniket Krushna Satav
+Role: Machine Learning Intern
+Organization: Cognifyz Technologies
+
+1. INTRODUCTION
+Cuisine is an important characteristic of a restaurant and can be influenced by factors such as location, pricing, services, popularity, and restaurant ratings. Machine learning can be used to identify patterns in these attributes and classify restaurants according to their cuisine.
+As part of the Cognifyz Technologies Machine Learning Internship, this task focuses on developing a multiclass classification system to classify restaurants based on their primary cuisine. The task involves preprocessing the data, defining the classification target, selecting suitable features, training classification algorithms, evaluating their performance, and analyzing the results across different cuisine classes.
+
+2. OBJECTIVE
+The main objectives of this task are:
+• To preprocess the restaurant dataset for classification.
+• To create a suitable cuisine classification target.
+• To handle rare cuisine classes.
+• To select relevant restaurant and location features.
+• To prevent target leakage.
+• To divide the dataset into training and testing sets.
+• To train classification models.
+• To evaluate the models using accuracy, precision, recall, and F1 score.
+• To analyze classification performance across different cuisine classes.
+• To identify challenges, class imbalance, and possible biases.
+
+3. DATASET DESCRIPTION
+The restaurant dataset provided for the internship contains 9,551 restaurant records and 21 attributes.
+The dataset includes information related to restaurant identity, location, cuisine, pricing, services, ratings, and popularity.
+Important attributes include Restaurant ID, Restaurant Name, Country Code, City, Address, Locality, Longitude, Latitude, Cuisines, Average Cost for two, Currency, Has Table booking, Has Online delivery, Is delivering now, Switch to order menu, Price range, Aggregate rating, Rating color, Rating text, and Votes.
+The dataset was explored and cleaned before developing the cuisine classification model.
+
+4. TARGET DEFINITION
+The original Cuisines column contains multiple cuisines for some restaurants. For example, a restaurant may contain values such as:
+North Indian, Chinese
+North Indian, Mughlai, Chinese
+Italian, Pizza
+To formulate a practical multiclass classification problem, the first cuisine listed for each restaurant was selected as the Primary Cuisine.
+The Primary Cuisine was then used to create the final Cuisine Class target.
+
+5. PRIMARY CUISINE CREATION
+A Primary Cuisine feature was created by taking the first cuisine from the Cuisines column and removing unnecessary spaces.
+For example:
+Original Cuisines: North Indian, Chinese
+Primary Cuisine: North Indian
+This approach simplifies the original multi-cuisine representation into one target class for each restaurant.
+
+6. HANDLING RARE CUISINE CLASSES
+The dataset contains a large number of cuisine classes with highly different frequencies. Some cuisine categories have many restaurant records, while others occur only a small number of times.
+To reduce the effect of extremely rare classes, cuisine classes with fewer than 50 observations were grouped into a common Other category.
+This approach creates a more practical classification problem and reduces the difficulty associated with training separate classes using only a few observations.
+The threshold of 50 observations was selected as a project design choice based on the observed class distribution.
+
+7. HANDLING UNKNOWN CUISINE VALUES
+Restaurants for which the cuisine information was unavailable were represented as Unknown during the initial cleaning process.
+For the classification task, records with an Unknown cuisine class were excluded because they do not provide a meaningful known cuisine target for supervised classification.
+
+8. FINAL CLASSIFICATION TARGET
+The final target variable used for the classification task is:
+Cuisine Class
+The target represents the primary cuisine category of each restaurant after rare classes were grouped into Other.
+
+9. FEATURE SELECTION
+The following features were selected as inputs for classification:
+• Country Code
+• City
+• Average Cost for two
+• Currency
+• Has Table booking
+• Has Online delivery
+• Is delivering now
+• Price range
+• Aggregate rating
+• Votes
+• Latitude
+• Longitude
+These features represent different characteristics of restaurants, including geographical location, pricing, services, ratings, and popularity.
+
+10. TARGET LEAKAGE PREVENTION
+The following columns were excluded from the model input:
+• Cuisines
+• Primary Cuisine
+• Cuisine Class
+Cuisines and Primary Cuisine were excluded because they directly contain the information used to construct the target variable Cuisine Class.
+Cuisine Class itself was excluded because it is the target variable.
+Removing these fields prevents target leakage and ensures that the classification model learns from independent restaurant attributes.
+
+11. TRAIN-TEST SPLIT
+The classification dataset was divided into training and testing subsets using an 80:20 split.
+The training dataset was used to train the classification models, while the testing dataset was reserved for evaluating performance on unseen data.
+A random state of 42 was used to make the experiment reproducible.
+Stratified sampling was used during the train-test split so that the distribution of cuisine classes was approximately preserved between the training and testing datasets.
+
+12. DATA PREPROCESSING
+The numerical and categorical variables were processed separately.
+Numerical features were handled using median imputation for missing values followed by standardization using StandardScaler.
+Categorical features were handled using most-frequent-value imputation followed by one-hot encoding.
+A Scikit-learn ColumnTransformer and Pipeline were used to combine these preprocessing operations with the classification models.
+
+13. CLASS IMBALANCE
+The cuisine classes in the dataset are not evenly distributed. Some cuisine categories have substantially more restaurant records than others.
+This class imbalance can cause a classifier to perform better on frequently represented classes and worse on less-represented classes.
+To reduce the impact of imbalance during model training, class weighting was used in the classification models.
+
+14. MACHINE LEARNING MODELS
+Two classification algorithms were trained and compared.
+
+14.1 LOGISTIC REGRESSION
+Logistic Regression was used as one of the baseline classification approaches. It provides a relatively simple and interpretable method for multiclass classification after preprocessing and one-hot encoding of categorical features.
+
+14.2 RANDOM FOREST CLASSIFIER
+Random Forest Classifier was used as a nonlinear ensemble classification method. It combines multiple decision trees and can capture more complex relationships between restaurant attributes and cuisine classes.
+
+15. MODEL TRAINING
+Both classification models were trained using the same training dataset and preprocessing pipeline.
+The use of the same train-test split and preprocessing strategy provides a consistent basis for comparing the two models.
+
+16. EVALUATION METRICS
+The models were evaluated using the following metrics.
+
+Accuracy:
+Accuracy represents the proportion of correctly classified restaurant records out of all test records. Higher accuracy indicates better overall classification performance.
+
+Precision:
+Precision measures how many of the restaurants predicted as a particular cuisine actually belong to that cuisine.
+
+Recall:
+Recall measures how many of the restaurants belonging to a particular cuisine were correctly identified by the model.
+
+F1 Score:
+F1 Score combines precision and recall into a single metric. It is particularly useful when class distributions are not perfectly balanced.
+
+Weighted averages were used for precision, recall, and F1 score to account for differences in the number of observations across cuisine classes.
+
+17. MODEL COMPARISON
+The Logistic Regression and Random Forest models were evaluated on the held-out test dataset using accuracy, weighted precision, weighted recall, and weighted F1 score.
+The detailed numerical results are available in the Task 3 notebook and the generated model comparison CSV file.
+The final model was selected based on its overall test-set performance, with particular attention given to the weighted F1 score because the dataset contains imbalanced cuisine classes.
+
+18. CLASSIFICATION REPORT
+A detailed classification report was generated for the selected final model.
+The report provides precision, recall, F1 score, and support for each cuisine class.
+The class-wise results were analyzed to determine which cuisines were classified more successfully and which cuisines were more difficult for the model to identify.
+
+Figure: Classification Performance by Cuisine Class
+
+19. CUISINE-WISE PERFORMANCE ANALYSIS
+The classification results showed that performance varied across different cuisine classes.
+Frequently represented classes can provide the model with more training examples and may therefore be easier to classify.
+Less-represented classes may be more difficult because fewer examples are available for learning their patterns.
+The strongest and weakest cuisine classes were identified using the class-level F1 scores from the classification report.
+
+20. CONFUSION MATRIX
+A confusion matrix was generated for the selected classification model.
+The matrix compares the actual cuisine classes with the predicted cuisine classes.
+Correct predictions appear along the main diagonal, while values outside the diagonal represent misclassifications.
+The confusion matrix was used to identify cuisine classes that were frequently confused with one another.
+
+Figure: Confusion Matrix for the Selected Cuisine Classification Model
+
+21. MISCLASSIFICATION ANALYSIS
+Incorrect predictions were examined to understand the types of mistakes made by the model.
+The analysis considered the actual cuisine, predicted cuisine, city, price range, aggregate rating, and votes associated with incorrectly classified restaurants.
+Common misclassifications may indicate that the available restaurant attributes do not provide enough information to clearly distinguish certain cuisine classes.
+
+22. FEATURE IMPORTANCE
+Feature importance was analyzed using the Random Forest model.
+The importance values indicate which transformed features contributed most strongly to the model's classification decisions.
+Features related to geographical location, pricing, restaurant services, ratings, and popularity may contribute differently to the classification process.
+Feature importance should be interpreted as a measure of contribution to model predictions and not as proof of a causal relationship.
+
+Figure: Top Features Used by the Random Forest Classifier
+
+23. CLASS SIZE AND PERFORMANCE
+The relationship between cuisine class size and F1 score was examined to understand the effect of class imbalance.
+The analysis helps identify whether lower-frequency cuisine categories tend to have weaker classification performance.
+This analysis provides additional context when interpreting overall accuracy and weighted metrics.
+
+Figure: Cuisine Class Size vs F1 Score
+
+24. MODEL GENERALIZATION
+Training and testing performance were compared to examine whether the classification models generalized effectively to unseen observations.
+A large difference between training and testing performance may indicate overfitting.
+The comparison of training and testing accuracy was therefore used as an additional diagnostic alongside the standard evaluation metrics.
+
+25. RESULTS
+The cuisine classification task successfully implemented a complete multiclass machine learning workflow.
+The process included:
+• Cuisine preprocessing
+• Primary cuisine creation
+• Rare-class grouping
+• Target definition
+• Target leakage prevention
+• Feature selection
+• Stratified train-test splitting
+• Numerical preprocessing
+• Categorical preprocessing
+• Logistic Regression training
+• Random Forest training
+• Model comparison
+• Classification report analysis
+• Confusion matrix analysis
+• Class imbalance analysis
+• Feature importance analysis
+
+26. KEY FINDINGS
+The classification task demonstrates that restaurant-related information can be used to infer cuisine classes using machine learning.
+The performance of the classification models varied across different cuisine categories.
+Class imbalance is an important consideration because frequent cuisines generally provide more training examples than rare cuisines.
+The confusion matrix helped identify classes that were commonly confused with one another.
+Feature importance analysis provided insight into the restaurant attributes that the Random Forest model relied upon most strongly.
+
+27. CHALLENGES AND POSSIBLE BIAS
+Several challenges and potential sources of bias were identified during the classification task.
+First, the dataset contains imbalanced cuisine classes, which can make classification more difficult for less-represented classes.
+Second, the restaurant dataset may contain more records from certain cities or regions, which can make geographical features influential in the classification process.
+Third, the original multi-cuisine information was simplified into a single primary cuisine, which reduces the complexity of the target but also loses information about additional cuisines.
+Fourth, rare cuisine classes were grouped into the Other category, which improves the practicality of the classification problem but reduces the granularity of the final target classes.
+
+28. LIMITATIONS
+• The classification target represents only the first cuisine listed for each restaurant rather than all cuisines associated with the restaurant.
+• Rare cuisine classes were grouped into Other, reducing the number of distinct target classes.
+• The dataset contains imbalanced cuisine categories.
+• Geographic concentration may cause the model to rely strongly on city or location information.
+• The model uses only the attributes available in the provided dataset.
+• Factors that may distinguish cuisines but are not represented in the dataset cannot be learned by the model.
+• Feature importance indicates model contribution and does not establish causation.
+• Test-set performance may not fully represent performance on future restaurant data.
+
+29. CONCLUSION
+A multiclass machine learning classification system was developed to classify restaurants according to their primary cuisine using the restaurant dataset provided for the Cognifyz Technologies Machine Learning Internship.
+The original Cuisines column was processed to create a Primary Cuisine target, and rare cuisine classes were grouped into an Other category. Restaurants with Unknown cuisine labels were excluded from the classification dataset.
+Relevant restaurant, location, pricing, service, rating, and popularity features were selected as model inputs, while the original cuisine information was excluded to prevent target leakage.
+An 80:20 stratified train-test split was used, and numerical and categorical features were processed using a Scikit-learn preprocessing pipeline.
+Logistic Regression and Random Forest Classifier were trained and evaluated using accuracy, precision, recall, and F1 score.
+Cuisine-wise performance was analyzed using a classification report and confusion matrix. Class imbalance, misclassification patterns, feature importance, and possible sources of bias were also examined.
+Overall, this task provided practical experience in multiclass classification, preprocessing, target engineering, class imbalance handling, model evaluation, confusion matrix analysis, feature importance, and interpretation of machine learning results.
+
+30. TECHNOLOGIES USED
+Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, Jupyter Notebook.
+
+31. PROJECT OUTPUTS
+Notebook: 04_Task3_Cuisine_Classification.ipynb
+Important result files include task3_final_results.csv, task3_model_comparison.csv, task3_classification_report.csv, task3_final_classification_report.csv, task3_class_imbalance.csv, task3_feature_importance.csv, and task3_train_test_accuracy.csv.
+Important visualizations include task3_top_primary_cuisines.png, task3_final_class_distribution.png, task3_accuracy_comparison.png, task3_f1_comparison.png, task3_confusion_matrix.png, task3_final_confusion_matrix.png, task3_class_size_vs_f1.png, task3_class_imbalance.png, and task3_feature_importance.png.
+
+32. FINAL STATEMENT
+This task demonstrated the complete machine learning workflow for a multiclass classification problem, including target preparation, rare-class handling, feature engineering, preprocessing, model training, evaluation, cuisine-wise analysis, confusion matrix interpretation, feature importance analysis, and discussion of class imbalance and model limitations.

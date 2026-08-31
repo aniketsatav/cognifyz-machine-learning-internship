@@ -1,0 +1,150 @@
+COGNIFYZ MACHINE LEARNING INTERNSHIP
+TASK 1 REPORT — RESTAURANT RATING PREDICTION
+Intern Name: Aniket Krushna Satav
+Role: Machine Learning Intern
+Organization: Cognifyz Technologies
+
+1. INTRODUCTION
+Restaurant ratings are an important indicator of customer perception and restaurant performance. Predicting restaurant ratings using machine learning can help identify patterns in restaurant characteristics and understand which available attributes are useful for estimating a restaurant's rating.
+As part of the Cognifyz Technologies Machine Learning Internship, this task focuses on developing a regression-based machine learning system for predicting the Aggregate rating of restaurants. The task involves preprocessing the dataset, selecting relevant features, dividing the data into training and testing sets, training regression models, evaluating their performance, and interpreting the results.
+
+2. OBJECTIVE
+The main objectives of this task are:
+• To understand and preprocess the restaurant dataset.
+• To identify suitable features for predicting restaurant ratings.
+• To formulate restaurant rating prediction as a regression problem.
+• To train and compare multiple regression algorithms.
+• To evaluate model performance using MAE, MSE, RMSE, and R².
+• To analyze prediction errors.
+• To identify influential features affecting model predictions.
+• To select the most suitable regression model.
+The target variable used for this task is Aggregate rating.
+
+3. DATASET DESCRIPTION
+The restaurant dataset provided for the internship contains 9,551 restaurant records and 21 attributes. The dataset includes information related to restaurant identity, location, cuisine, pricing, services, ratings, and popularity.
+Important attributes include Restaurant ID, Restaurant Name, Country Code, City, Address, Locality, Locality Verbose, Longitude, Latitude, Cuisines, Average Cost for two, Currency, Has Table booking, Has Online delivery, Is delivering now, Switch to order menu, Price range, Aggregate rating, Rating color, Rating text, and Votes.
+The dataset was explored and cleaned before developing the machine learning model.
+
+4. DATA PREPROCESSING
+Exploratory data analysis identified several data-quality issues. The Cuisines column contained a small number of missing values, which were handled by replacing them with "Unknown" in the cleaned master dataset. Duplicate records were checked and no duplicate rows were found.
+The dataset also contained restaurants with an Aggregate rating of 0. These records were associated with restaurants marked as "Not rated". Since the objective of this task is to predict an actual restaurant rating, unrated restaurants were excluded from the dataset used for regression training.
+Some zero values in Average Cost for two were also treated as missing values for later preprocessing.
+
+5. FEATURE ENGINEERING
+A Primary Cuisine feature was created from the first cuisine listed in the Cuisines column. For example, "North Indian, Chinese" was represented as "North Indian" for the Primary Cuisine feature.
+The final feature set consisted of numerical and categorical restaurant attributes.
+
+Numerical Features:
+• Average Cost for two
+• Price range
+• Votes
+• Latitude
+• Longitude
+
+Categorical Features:
+• Country Code
+• City
+• Has Table booking
+• Has Online delivery
+• Is delivering now
+• Primary Cuisine
+
+6. TARGET LEAKAGE PREVENTION
+The target variable for this task is Aggregate rating. Therefore, Aggregate rating itself was not included among the predictive features.
+Rating text and Rating color were also excluded because they are derived from the aggregate rating and could introduce target leakage.
+Excluding these variables ensures that the model learns from independent restaurant attributes rather than information derived from the target.
+
+7. TRAIN-TEST SPLIT
+The rated restaurant dataset was divided into training and testing subsets using an 80:20 split. The training data was used to fit the machine learning models, while the testing data was kept separate for evaluating model performance on unseen observations.
+A fixed random state of 42 was used to improve reproducibility.
+
+8. DATA PREPROCESSING PIPELINE
+Separate preprocessing procedures were used for numerical and categorical features.
+Numerical features were processed using median imputation for missing values and StandardScaler for feature scaling.
+Categorical features were processed using most-frequent-value imputation followed by one-hot encoding.
+The preprocessing operations were implemented using Scikit-learn Pipeline and ColumnTransformer.
+The preprocessing parameters were learned from the training data and then applied to the testing data to reduce the risk of data leakage.
+
+9. MACHINE LEARNING MODELS
+Three regression algorithms were evaluated.
+9.1 Linear Regression
+Linear Regression was used as the baseline regression model to estimate the relationship between the selected input features and aggregate restaurant ratings.
+9.2 Decision Tree Regression
+Decision Tree Regression was used to capture nonlinear relationships between restaurant characteristics and ratings.
+9.3 Random Forest Regression
+Random Forest Regression combines multiple decision trees and can model complex relationships between restaurant attributes and the target variable.
+
+10. MODEL EVALUATION
+The models were evaluated using Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and R² Score.
+MAE represents the average absolute difference between actual and predicted ratings. Lower values indicate smaller errors.
+MSE measures the average squared prediction error and gives greater weight to larger errors.
+RMSE is the square root of MSE and is expressed in the same unit as the rating. Lower RMSE indicates better performance.
+R² measures the proportion of variation in the target variable explained by the model. Higher values generally indicate better explanatory performance.
+
+11. MODEL COMPARISON
+The three regression models were evaluated on the held-out test dataset using MAE, MSE, RMSE, and R².
+The detailed numerical model comparison generated from the experiment is available in the Task 1 notebook and the corresponding CSV result files.
+The final model was selected by considering prediction error and explanatory performance on the test dataset.
+Selected Model: The best-performing model according to the actual test results was selected as the final regression model.
+
+12. ACTUAL VS PREDICTED ANALYSIS
+An Actual vs Predicted visualization was created for the selected regression model. The plot compares the actual restaurant ratings in the test dataset with the predicted ratings generated by the model.
+Predictions closer to the diagonal reference line indicate smaller prediction errors, while points farther away represent larger prediction differences.
+Figure: Actual vs Predicted Restaurant Ratings
+
+13. PREDICTION ERROR ANALYSIS
+Prediction error was calculated as:
+Error = Actual Rating − Predicted Rating
+Absolute prediction error was also calculated to identify observations with relatively large prediction differences.
+The error distribution was visualized to understand the overall spread of prediction errors and to identify cases where the model had greater difficulty making accurate predictions.
+Figure: Prediction Error Distribution
+
+14. FEATURE IMPORTANCE ANALYSIS
+Feature importance was analyzed using the Random Forest regression model. This analysis identifies the features that contributed most strongly to the prediction process.
+The most influential features were obtained from the fitted Random Forest model after preprocessing and encoding.
+Feature importance helps explain the behavior of the model; however, high feature importance does not establish a causal relationship between the feature and restaurant ratings.
+Figure: Top Features Influencing Restaurant Rating Predictions
+
+15. MODEL GENERALIZATION AND OVERFITTING
+Training and testing performance were compared to assess whether the models generalized well to unseen data.
+A substantial difference between training and testing performance may indicate overfitting, where the model fits the training data too closely and performs less effectively on unseen observations.
+Training and testing performance were therefore considered together when selecting the final model.
+
+16. RESULTS
+The restaurant rating prediction task successfully implemented a complete supervised regression workflow. The process included dataset exploration, data cleaning, feature engineering, target definition, leakage prevention, train-test splitting, preprocessing, model training, model comparison, prediction error analysis, and feature importance analysis.
+Three regression algorithms were evaluated, providing a comparison between linear and nonlinear modeling approaches.
+
+17. KEY FINDINGS
+The analysis demonstrates that restaurant ratings can be modeled using restaurant, pricing, location, service, cuisine, and popularity-related attributes.
+Different regression algorithms produced different levels of predictive performance on the same dataset.
+The comparison of MAE, MSE, RMSE, and R² provided a basis for selecting the most suitable model.
+Error analysis showed that prediction performance is not necessarily uniform across all restaurants.
+Feature importance analysis provided insight into the variables most strongly used by the tree-based model.
+
+18. LIMITATIONS
+• The model uses only the attributes available in the provided dataset.
+• Important factors that influence restaurant ratings may not be represented.
+• Restaurants marked as "Not rated" were excluded from the rating prediction dataset.
+• Some numerical variables have highly skewed distributions.
+• Unusual values may affect model behavior.
+• Feature importance indicates model contribution but does not establish causation.
+• Performance on this dataset may not generalize perfectly to future restaurant observations.
+
+19. CONCLUSION
+A machine learning regression system was developed to predict restaurant aggregate ratings using the restaurant dataset provided for the Cognifyz Technologies Machine Learning Internship.
+The dataset was cleaned and prepared, relevant numerical and categorical features were selected, and target leakage was prevented by excluding the target and variables derived from it.
+An 80:20 train-test split was used, and a preprocessing pipeline was developed to handle numerical and categorical features.
+Linear Regression, Decision Tree Regression, and Random Forest Regression were trained and evaluated using MAE, MSE, RMSE, and R².
+Model comparison, prediction error analysis, and feature importance analysis were performed to understand the performance and behavior of the models.
+Overall, the task demonstrates the complete machine learning workflow for a regression problem, from data preparation and feature engineering to model training, evaluation, interpretation, and documentation.
+
+20. TECHNOLOGIES USED
+Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, Jupyter Notebook.
+
+21. PROJECT OUTPUTS
+Notebook: 02_Task1_Rating_Prediction.ipynb
+Important result files include task1_final_results.csv, task1_final_model_comparison.csv, task1_final_feature_importance.csv, and task1_train_test_r2.csv.
+Important visualizations include task1_rating_distribution.png, task1_model_r2_comparison.png, task1_model_rmse_comparison.png, task1_final_actual_vs_predicted.png, task1_error_distribution.png, and task1_final_feature_importance.png.
+
+22. FINAL STATEMENT
+This task provided practical experience in data preprocessing, feature engineering, supervised learning, regression model comparison, model evaluation, error analysis, feature interpretation, and technical documentation using a real-world restaurant dataset.

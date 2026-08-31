@@ -1,0 +1,241 @@
+COGNIFYZ MACHINE LEARNING INTERNSHIP
+TASK 4 REPORT — LOCATION-BASED ANALYSIS
+Intern Name: Aniket Krushna Satav
+Role: Machine Learning Intern
+Organization: Cognifyz Technologies
+
+1. INTRODUCTION
+Location plays an important role in understanding the geographical distribution and characteristics of restaurants. Analyzing restaurant locations can reveal patterns related to restaurant concentration, ratings, pricing, cuisines, and available services across cities and localities.
+As part of the Cognifyz Technologies Machine Learning Internship, this task focuses on performing a location-based analysis of the restaurant dataset. The analysis uses geographical coordinates along with city, locality, cuisine, price range, rating, and service-related information to identify meaningful geographical patterns.
+The Cognifyz task requires analyzing the geographical distribution of restaurants using latitude and longitude, visualizing the distribution on a map, grouping restaurants by city or locality, calculating statistics such as average ratings, cuisines, and price ranges, and identifying interesting location-based patterns.
+
+2. OBJECTIVE
+The main objectives of this task are:
+• To analyze the geographical distribution of restaurants.
+• To visualize restaurant locations using latitude and longitude.
+• To identify cities and localities with high restaurant concentration.
+• To compare average restaurant ratings across locations.
+• To analyze price-range patterns across cities.
+• To examine cuisine distribution across geographical areas.
+• To analyze restaurant service patterns by location.
+• To identify meaningful geographical patterns from the dataset.
+
+3. DATASET DESCRIPTION
+The restaurant dataset provided for the internship contains 9,551 restaurant records and 21 attributes.
+The dataset includes restaurant identity, location, cuisine, pricing, services, ratings, and popularity information.
+Important attributes used in this analysis include Restaurant ID, Restaurant Name, City, Locality, Longitude, Latitude, Cuisines, Average Cost for two, Currency, Has Table booking, Has Online delivery, Is delivering now, Price range, Aggregate rating, and Votes.
+
+4. LOCATION DATA PREPARATION
+Latitude and longitude values were examined before performing geographical analysis.
+Records with both Latitude and Longitude equal to zero were treated as invalid for geographical visualization and were excluded from the location-clean dataset.
+This ensures that restaurants plotted on maps have meaningful geographical coordinates.
+
+5. COORDINATE VALIDATION
+The location-clean dataset was checked for missing and invalid geographical coordinates.
+The following checks were performed:
+• Missing Latitude values
+• Missing Longitude values
+• Records where Latitude equals zero
+• Records where Longitude equals zero
+The cleaned dataset was used for subsequent geographical analysis and mapping.
+
+6. GEOGRAPHICAL DISTRIBUTION OF RESTAURANTS
+The geographical distribution of restaurants was visualized using latitude and longitude coordinates.
+An interactive geographical visualization was created using Plotly to display restaurant locations.
+Restaurant-level information such as restaurant name, city, locality, rating, and price range can be explored through the interactive map.
+
+Figure: Geographical Distribution of Restaurants
+
+The geographical visualization provides an overview of how restaurant records are distributed across different geographical regions represented in the dataset.
+
+7. CITY-LEVEL RESTAURANT CONCENTRATION
+Restaurants were grouped by City to identify locations with the largest number of restaurant records.
+The number of restaurants in each city was calculated and cities were ranked according to restaurant count.
+This analysis helps identify areas with high concentrations of restaurants within the provided dataset.
+
+Figure: Top Cities by Number of Restaurants
+
+The city-level analysis shows that restaurant records are not distributed evenly across all cities. A limited number of cities account for a substantial portion of the restaurant records.
+
+8. CITY CONCENTRATION ANALYSIS
+The percentage contribution of each city to the total number of restaurant records was calculated.
+This provides a clearer view of the concentration of restaurants by location.
+The concentration percentage was calculated as:
+
+City Percentage = (Restaurants in City / Total Restaurants) × 100
+
+The resulting statistics were used to identify cities that contribute most strongly to the restaurant dataset.
+
+9. LOCALITY-LEVEL RESTAURANT CONCENTRATION
+Restaurants were also grouped by locality to identify areas with high restaurant density.
+The most frequently represented localities were ranked according to their number of restaurant records.
+
+Figure: Top Localities by Number of Restaurants
+
+The locality analysis provides a more detailed view of restaurant concentration within cities and helps identify specific urban areas with a large number of restaurants.
+
+10. AVERAGE RESTAURANT RATING BY CITY
+Restaurant ratings were analyzed across cities to compare average restaurant performance by location.
+Restaurants with Aggregate rating equal to zero were treated as "Not rated" and were excluded when calculating meaningful average rating statistics.
+To avoid misleading comparisons based on extremely small sample sizes, cities with very few rated restaurants were excluded from the reliable city-level comparison.
+
+The average rating was calculated as the mean Aggregate rating of rated restaurants within each city.
+
+Figure: Cities with Highest Average Restaurant Ratings
+
+This analysis provides a descriptive comparison of restaurant ratings across different locations represented in the dataset.
+
+11. AVERAGE RATING BY LOCALITY
+Average restaurant ratings were also calculated at the locality level.
+Localities with very few rated restaurants were excluded from comparative rankings to reduce the effect of extremely small samples.
+This allows locations with a sufficient number of rated restaurants to be compared more meaningfully.
+
+12. PRICE RANGE ANALYSIS BY CITY
+The Price range attribute was analyzed across cities to identify geographical differences in restaurant pricing.
+Price range values represent categorical levels from 1 to 4.
+The average price range was calculated for cities with a sufficient number of restaurant records.
+
+Figure: Average Restaurant Price Range by City
+
+The analysis helps identify locations with relatively lower or higher average price-range categories in the provided dataset.
+
+13. PRICE DISTRIBUTION ACROSS MAJOR CITIES
+A cross-tabulation of city and price range was created to examine how restaurants are distributed across different price categories.
+The analysis was focused on major cities with large numbers of restaurant records.
+
+Figure: Price Range Distribution Across Major Cities
+
+This provides a comparative view of low-, medium-, and high-price restaurant categories across major locations.
+
+14. CUISINE ANALYSIS BY CITY
+Cuisine information was analyzed across major cities to identify geographical patterns in cuisine availability.
+Because a restaurant can contain multiple cuisine values in the Cuisines column, the cuisine entries were separated into individual cuisine types for analysis.
+The cuisine records were then grouped by city and cuisine to determine the most frequently represented cuisines.
+
+Figure: Popular Cuisines Across Major Cities
+
+This analysis provides an overview of how cuisine availability varies across geographical locations.
+
+15. RESTAURANT SERVICES BY CITY
+Restaurant service attributes were also examined by location.
+The analysis considered:
+• Has Online delivery
+• Has Table booking
+These service attributes were compared across cities to identify geographical differences in restaurant service availability.
+Such analysis provides additional context for understanding the characteristics of restaurant markets across locations.
+
+16. CITY-LEVEL GEOGRAPHICAL MAP
+A city-level interactive map was created by aggregating restaurant coordinates and calculating city-level statistics.
+The map represents:
+• Average geographical location of restaurants in each city
+• Restaurant count
+• Number of rated restaurants
+• Average restaurant rating
+
+Figure: Restaurant Concentration and Average Rating by City
+
+The size of each geographical point represents restaurant concentration, while the associated rating information provides an additional comparison between locations.
+
+17. RESTAURANT-LEVEL INTERACTIVE MAP
+An interactive restaurant-level map was also created using individual restaurant coordinates.
+Users can explore restaurant records by geographical location and inspect attributes such as:
+• Restaurant name
+• City
+• Locality
+• Aggregate rating
+• Price range
+• Cuisine
+
+Figure: Interactive Restaurant Distribution Map
+
+Because the dataset contains a large number of restaurant records, a sampled version of the restaurant-level map may be used for efficient visualization.
+
+18. RESTAURANT CONCENTRATION ANALYSIS
+The analysis demonstrates that restaurant records are concentrated in particular cities and localities rather than being evenly distributed across all geographical areas represented in the dataset.
+The concentration analysis provides a basis for identifying major restaurant markets and urban areas with high restaurant activity.
+
+19. RATING PATTERNS
+Restaurant ratings vary across cities and localities.
+For meaningful comparisons, the analysis excludes restaurants marked as "Not rated" and considers a minimum number of rated restaurants when ranking locations.
+This reduces the likelihood that a location with only a few rated restaurants dominates the comparison because of a small sample size.
+
+20. PRICE PATTERNS
+The average Price range differs across locations.
+The comparison helps identify geographical differences in the distribution of restaurants across price categories.
+However, Price range is an ordinal category rather than an actual monetary value, so the analysis should be interpreted as a comparison of restaurant price categories rather than exact spending levels.
+
+21. CUISINE PATTERNS
+Cuisine availability varies between cities.
+Some cuisine types are represented more frequently in particular geographical areas, reflecting differences in the restaurant composition of different markets within the dataset.
+The cuisine analysis provides descriptive geographical insights rather than establishing a causal relationship between location and cuisine choice.
+
+22. KEY GEOGRAPHICAL INSIGHTS
+The location-based analysis provides several broad observations:
+• Restaurant records are concentrated in a limited number of cities.
+• Within cities, restaurant activity is also concentrated in particular localities.
+• Average ratings differ across geographical areas.
+• Price-range distributions vary across cities.
+• Cuisine availability shows geographical variation.
+• Restaurant service availability, such as online delivery and table booking, also varies between locations.
+• Interactive maps provide a visual representation of restaurant concentration and geographical patterns.
+
+The specific highest-count, highest-rated, and highest-price-range locations are determined from the generated analysis tables.
+
+23. DATA VISUALIZATION
+Several visualizations were created to support the geographical analysis:
+• Geographical restaurant distribution map
+• City-level restaurant concentration map
+• Top cities by restaurant count
+• Top localities by restaurant count
+• Average rating by city
+• Lowest and highest-rated cities
+• Average price range by city
+• Price distribution across major cities
+• Cuisine patterns across major cities
+
+These visualizations provide both geographical and statistical perspectives on the restaurant dataset.
+
+24. LIMITATIONS
+Several limitations should be considered when interpreting the results:
+• The analysis is based only on restaurants represented in the provided dataset.
+• The dataset may not represent the complete restaurant market of every city or locality.
+• Restaurants with invalid zero coordinates were excluded from geographical visualization.
+• Restaurants with an Aggregate rating of zero were treated as "Not rated" for average-rating calculations.
+• Locations with very small sample sizes were excluded from some comparisons to reduce misleading results.
+• Price range is a categorical scale and does not represent exact monetary expenditure.
+• Multi-cuisine restaurants can make cuisine comparisons more complex because multiple cuisines may be stored in one record.
+• Geographical analysis identifies patterns and associations but does not establish causal relationships.
+
+25. RESULTS
+The location-based analysis successfully examined the geographical structure of the restaurant dataset.
+The task included:
+• Coordinate validation
+• Restaurant geographical distribution
+• City-level concentration analysis
+• Locality-level concentration analysis
+• Average rating analysis
+• Price-range analysis
+• Cuisine analysis
+• Restaurant service analysis
+• Interactive geographical visualization
+• City-level statistical summaries
+The resulting tables and visualizations provide a comprehensive descriptive analysis of restaurant locations and their associated characteristics.
+
+26. CONCLUSION
+A location-based analysis was successfully performed using the restaurant dataset provided for the Cognifyz Technologies Machine Learning Internship.
+Latitude and longitude were used to visualize restaurant distribution, while city and locality information was used to identify areas with high restaurant concentration.
+Additional analysis was performed to compare average ratings, price ranges, cuisine distributions, and restaurant services across different geographical locations.
+Interactive maps were created to provide a visual representation of restaurant locations and city-level restaurant concentration.
+The analysis demonstrates how geographical information can be combined with restaurant attributes to identify meaningful patterns in a restaurant dataset.
+Overall, this task provided practical experience in geographical data analysis, aggregation, statistical comparison, data visualization, interactive mapping, and interpretation of location-based patterns.
+
+27. TECHNOLOGIES USED
+Python, Pandas, NumPy, Matplotlib, Seaborn, Plotly, Jupyter Notebook.
+
+28. PROJECT OUTPUTS
+Notebook: 05_Task4_Location_Analysis.ipynb
+Important result files include task4_city_restaurant_distribution.csv, task4_locality_distribution.csv, task4_city_statistics.csv, task4_top_city_summary.csv, task4_final_city_analysis.csv, task4_final_locality_analysis.csv, and task4_final_summary.csv.
+Important visualization files include task4_final_restaurant_map.html, task4_sample_restaurant_map.html, task4_final_city_map.html, task4_final_top_10_cities.png, task4_final_top_localities.png, task4_highest_rated_cities.png, task4_lowest_rated_cities.png, task4_final_price_by_city.png, and task4_cuisine_patterns_major_cities.png.
+
+29. FINAL STATEMENT
+This task demonstrated the complete workflow for location-based restaurant analysis, including geographical data validation, city and locality aggregation, rating and pricing analysis, cuisine analysis, service analysis, interactive geographical visualization, identification of geographical patterns, and interpretation of results.
