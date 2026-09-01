@@ -1,38 +1,62 @@
 COGNIFYZ MACHINE LEARNING INTERNSHIP
-TASK 2 REPORT — RESTAURANT RECOMMENDATION SYSTEM
+TASK 2 REPORT - RESTAURANT RECOMMENDATION SYSTEM
+
 Intern Name: Aniket Krushna Satav
 Role: Machine Learning Intern
 Organization: Cognifyz Technologies
 
 1. INTRODUCTION
-A restaurant recommendation system can help users discover restaurants that match their preferences. Recommendation systems can use information about restaurants such as cuisine, location, pricing, ratings, and available services to identify suitable options.
-As part of the Cognifyz Technologies Machine Learning Internship, this task focuses on developing a content-based restaurant recommendation system. The system accepts user preferences and recommends restaurants by filtering suitable restaurants and ranking them according to content similarity and restaurant rating.
-The Cognifyz task requires defining recommendation criteria such as cuisine and price range, implementing a content-based filtering approach, and testing the recommendation system using sample user preferences.
+
+A restaurant recommendation system can help users discover restaurants that match their preferences. Recommendation systems can use restaurant characteristics such as cuisine, location, pricing, ratings, and available services to identify suitable options.
+
+As part of the Cognifyz Technologies Machine Learning Internship, this task focuses on developing a content-based restaurant recommendation system. The system accepts user preferences and recommends restaurants by first applying explicit preference-based filters and then ranking the resulting restaurants according to content similarity and restaurant rating.
 
 2. OBJECTIVE
+
 The main objectives of this task are:
+
 • To develop a restaurant recommendation system based on user preferences.
-• To preprocess restaurant data required for recommendation.
-• To define recommendation criteria such as city, cuisine, and price range.
-• To implement content-based filtering.
-• To use TF-IDF to represent restaurant content.
+• To preprocess restaurant information required for recommendation.
+• To define recommendation criteria such as city, cuisine, price range, minimum rating, and online delivery.
+• To implement a content-based filtering approach.
+• To use TF-IDF to represent textual restaurant information.
 • To calculate similarity using cosine similarity.
-• To rank restaurants according to their suitability for the user.
-• To test the system using different sample user preferences.
-• To evaluate whether the generated recommendations satisfy the requested preferences.
+• To combine similarity and restaurant rating for ranking.
+• To return the Top N restaurants matching the user's requirements.
+• To test the recommendation system using different preference combinations.
+• To handle invalid inputs and cases where no restaurants match the selected criteria.
 
 3. DATASET DESCRIPTION
+
 The restaurant dataset provided for the internship contains 9,551 restaurant records and 21 attributes.
-The dataset contains restaurant information including Restaurant ID, Restaurant Name, Country Code, City, Address, Locality, Longitude, Latitude, Cuisines, Average Cost for two, Currency, Has Table booking, Has Online delivery, Is delivering now, Switch to order menu, Price range, Aggregate rating, Rating color, Rating text, and Votes.
-For the recommendation task, restaurant attributes related to location, cuisine, price, rating, and services were used to create the recommendation system.
+
+The dataset contains information including Restaurant ID, Restaurant Name, Country Code, City, Address, Locality, Longitude, Latitude, Cuisines, Average Cost for two, Currency, Has Table booking, Has Online delivery, Is delivering now, Switch to order menu, Price range, Aggregate rating, Rating color, Rating text, and Votes.
+
+For the recommendation task, restaurant attributes related to city, locality, cuisine, pricing, ratings, and services were used.
 
 4. DATA PREPARATION
-A separate recommendation dataset was created from the cleaned restaurant dataset. The selected information included Restaurant Name, City, Locality, Cuisines, Price range, Aggregate rating, Has Online delivery, and Has Table booking.
-Text-based features such as City, Locality, and Cuisines were cleaned by handling missing values, converting values to strings, removing unnecessary spaces, and normalizing text to lowercase.
-The recommendation system retains the complete restaurant dataset because restaurants marked as "Not rated" may still be valid restaurant choices for recommendation.
+
+A separate recommendation dataset was prepared from the cleaned restaurant dataset.
+
+The recommendation system uses information including:
+
+• Restaurant Name
+• City
+• Locality
+• Cuisines
+• Price range
+• Aggregate rating
+• Has Online delivery
+• Has Table booking
+
+Text-based fields were cleaned by handling missing values, converting values to strings, removing unnecessary spaces, and normalizing text.
+
+The recommendation process does not require the restaurant rating to be non-zero because a restaurant can still be a valid candidate when rating is not used as a strict requirement.
 
 5. RECOMMENDATION FEATURES
-The system uses the following information:
+
+The recommendation system uses the following information:
+
 • City
 • Cuisine
 • Locality
@@ -40,24 +64,33 @@ The system uses the following information:
 • Aggregate rating
 • Online delivery availability
 • Table booking availability
-These attributes provide information that can be used to match restaurants with user preferences.
+
+These attributes provide information that can be used to identify restaurants matching a user's requirements.
 
 6. RECOMMENDATION CRITERIA
-The system accepts the following user preferences:
+
+The recommendation system accepts the following user inputs:
+
 • City
 • Cuisine
 • Price range
 • Minimum rating
 • Online delivery
-The user can therefore specify the type of restaurant they want and the constraints they consider important.
+• Number of recommendations
 
-7. CONTENT-BASED FILTERING APPROACH
-A content-based filtering approach was selected for the recommendation system. In this approach, recommendations are generated using the characteristics of the restaurants rather than historical interactions between users and restaurants.
-The system first filters restaurants according to explicit user preferences. The remaining restaurants are then ranked according to their similarity to the user's requested cuisine and city.
+These parameters allow users to specify both their preferred restaurant characteristics and filtering constraints.
+
+7. CONTENT-BASED FILTERING
+
+A content-based filtering approach was implemented for restaurant recommendation.
+
+Unlike collaborative filtering, which requires historical interactions between users and items, the implemented system uses the characteristics of the restaurants themselves.
 
 The recommendation workflow is:
 
 User Preferences
+        ↓
+Input Validation
         ↓
 Preference-Based Filtering
         ↓
@@ -67,43 +100,58 @@ TF-IDF Representation
         ↓
 Cosine Similarity
         ↓
-Similarity and Rating-Based Ranking
+Rating Score
+        ↓
+Final Ranking Score
         ↓
 Top N Recommendations
 
 8. CONTENT REPRESENTATION
-A combined content feature was created using the restaurant's cuisine, locality, and city information.
-For example, information such as:
-North Indian, Chinese
-Connaught Place
-New Delhi
-is combined into a text representation that can be processed using TF-IDF.
-This representation allows restaurants with similar cuisine and location-related characteristics to obtain higher similarity scores.
+
+Restaurant textual information was transformed into a representation suitable for similarity calculation.
+
+Cuisine and location-related information were used to represent restaurant content for the TF-IDF-based similarity calculation.
+
+The resulting textual representation allows the system to compare the user's requested cuisine and city with restaurant information and calculate a similarity score.
 
 9. TF-IDF VECTORIZATION
-TF-IDF, or Term Frequency-Inverse Document Frequency, was used to convert restaurant content into numerical vectors.
-The TF-IDF representation captures the importance of terms within the restaurant descriptions and provides a numerical representation that can be compared between restaurants and user preferences.
-The same TF-IDF representation was used to convert the user's cuisine and city preferences into a numerical vector.
+
+TF-IDF, or Term Frequency-Inverse Document Frequency, was used to convert textual information into numerical vectors.
+
+The TF-IDF method assigns greater importance to terms that are informative within the restaurant dataset while reducing the relative importance of terms that occur frequently across many records.
+
+A TF-IDF representation was created for the restaurant content, and the user's cuisine and city preferences were also transformed into the same vector space.
 
 10. COSINE SIMILARITY
-Cosine similarity was used to measure the similarity between the user preference vector and restaurant content vectors.
-A higher cosine similarity indicates that the restaurant's content representation is more similar to the user's specified cuisine and location preferences.
-The similarity score was used as an important component of the final recommendation ranking.
+
+Cosine similarity was used to measure the similarity between the user preference vector and the restaurant content vectors.
+
+The similarity score ranges according to the degree of alignment between the represented texts.
+
+A higher similarity score indicates that the restaurant content is more closely aligned with the user's specified cuisine and location preferences.
+
+The similarity score is used as the primary component of the recommendation ranking.
 
 11. USER PREFERENCE FILTERING
-Before calculating similarity, restaurants were filtered according to the user's selected constraints.
-The filtering process included:
+
+Before calculating similarity, restaurants are filtered using the explicit preferences supplied by the user.
+
+The filtering criteria include:
+
 • City
 • Cuisine
 • Price range
 • Minimum rating
 • Online delivery preference
-Applying these filters ensures that restaurants returned by the system satisfy the specified requirements before ranking is performed.
+
+This ensures that the recommendation results satisfy the user's specified constraints before the similarity-based ranking is applied.
 
 12. RECOMMENDATION FUNCTION
+
 A reusable function named recommend_restaurants() was implemented to generate recommendations.
 
-The function accepts:
+The function accepts the following parameters:
+
 • city
 • cuisine
 • price_range
@@ -111,27 +159,50 @@ The function accepts:
 • online_delivery
 • top_n
 
-The function performs input validation, filters restaurants, creates the user preference representation, calculates cosine similarity, calculates ranking scores, sorts the restaurants, and returns the requested number of recommendations.
-Input validation was included to prevent invalid values such as an empty city, empty cuisine, an invalid price range, or a rating outside the allowed range.
+The function performs the following operations:
+
+1. Validates user inputs.
+2. Creates a copy of the recommendation dataset.
+3. Normalizes text fields.
+4. Filters restaurants according to user preferences.
+5. Creates the user preference representation.
+6. Calculates TF-IDF-based similarity.
+7. Calculates a normalized rating score.
+8. Calculates a final ranking score.
+9. Sorts restaurants by the final score.
+10. Returns the requested number of recommendations.
+
+Input validation was included to handle invalid values such as an empty city, empty cuisine, invalid price range, or minimum rating outside the allowed range.
 
 13. RATING SCORE
-In addition to similarity, restaurant rating was included in the final ranking process.
-The restaurant rating was normalized to a 0–1 scale using:
+
+In addition to similarity, restaurant rating was incorporated into the ranking process.
+
+The rating was normalized to a 0-1 scale using:
 
 Rating Score = Aggregate Rating / 5
 
-This makes the rating comparable with the cosine similarity score.
+This normalization makes the restaurant rating numerically comparable with the similarity score.
 
 14. FINAL RANKING SCORE
+
 The final ranking score was calculated as:
 
 Final Score = 0.7 × Similarity Score + 0.3 × Rating Score
 
-The similarity component receives the larger weight so that recommendations remain primarily aligned with the user's content preferences, while restaurant rating contributes as a secondary quality factor.
-The resulting restaurants are sorted in descending order of Final Score and the top N restaurants are returned.
+The larger weight assigned to similarity ensures that the recommendations remain primarily aligned with the user's selected cuisine and location preferences.
+
+The rating score acts as a secondary quality-related factor.
+
+The weights of 0.7 and 0.3 are design choices used in this implementation and are not externally learned from user feedback.
+
+Restaurants are sorted in descending order of Final Score, and the Top N restaurants are returned.
 
 15. SAMPLE USER PREFERENCE
-The recommendation system was tested using sample user preferences such as:
+
+The recommendation system was tested using sample user preferences.
+
+Example:
 
 City: New Delhi
 Cuisine: North Indian
@@ -140,112 +211,191 @@ Minimum Rating: 4.0
 Online Delivery: Yes
 Number of Recommendations: 10
 
-The function filters the restaurant dataset according to these preferences and returns a ranked list of suitable restaurants.
+The function filters restaurants according to these requirements and returns the highest-ranked matching restaurants.
 
 16. SAMPLE RECOMMENDATION RESULTS
-The recommendation output contains information such as:
+
+The recommendation output contains:
+
 • Restaurant Name
 • City
 • Locality
 • Cuisines
 • Price range
 • Aggregate rating
-• Online delivery availability
+• Has Online delivery
 • Similarity Score
 • Rating Score
 • Final Score
 
-Figure: Sample Restaurant Recommendations
+A sample recommendation output generated by the system is presented below.
 
-17. TESTING WITH MULTIPLE USER PREFERENCES
-The recommendation system was tested using multiple combinations of user preferences to confirm that the recommendation logic works for different situations.
+Figure/Table: Sample Restaurant Recommendations
 
-Example test scenarios included:
-• North Indian cuisine in New Delhi with a moderate price range and high minimum rating.
-• Chinese cuisine in Gurgaon with online delivery.
-• Italian cuisine in New Delhi with a higher price range and optional delivery preference.
-• Highly restrictive preferences to test the no-result condition.
-• Relaxed preferences to observe how increasing the available restaurant pool affects the recommendations.
+The recommendation table demonstrates how the system ranks restaurants according to their preference matching and combined ranking score.
 
-Testing multiple scenarios helps demonstrate that the recommendation system is not limited to a single predefined input.
+17. TESTING WITH DIFFERENT USER PREFERENCES
+
+The recommendation system was tested with multiple combinations of user preferences to verify that the filtering and ranking process works correctly.
+
+The tests considered different combinations of:
+
+• City
+• Cuisine
+• Price range
+• Minimum rating
+• Online delivery preference
+• Number of recommendations
+
+This testing verifies that the recommendation system is not dependent on one fixed user input.
 
 18. RECOMMENDATION VALIDATION
-The recommendations were validated against the user's selected criteria.
-The validation process checks whether returned restaurants satisfy:
-• Requested city
-• Requested cuisine
-• Selected price range
-• Minimum rating requirement
-• Online delivery requirement when specified
 
-This validation provides a direct check that the recommendation function respects the hard constraints provided by the user.
+The returned recommendations were checked against the selected user preferences.
 
-19. HANDLING NO-RESULT CASES
-The system was designed to handle situations where no restaurants satisfy all selected preferences.
-Instead of producing an error, the system returns an empty result and displays a message explaining that no restaurants match the selected preferences.
-This behavior improves the robustness and usability of the recommendation system.
+The validation process verifies:
 
-20. SIMILARITY ANALYSIS
-Cosine similarity scores were analyzed to understand the ranking of recommended restaurants.
-Restaurants with higher similarity scores are more closely aligned with the textual content of the user's cuisine and location preferences.
-The similarity score represents content similarity and should not be interpreted as a probability that a user will like a particular restaurant.
+• The recommended restaurant belongs to the requested city.
+• The recommended restaurant contains the requested cuisine.
+• The restaurant satisfies the selected price range.
+• The restaurant meets the minimum rating requirement.
+• The restaurant satisfies the online delivery requirement when specified.
 
-21. RECOMMENDATION QUALITY EVALUATION
-The recommendation system was evaluated using multiple sample user preference scenarios.
-The returned restaurants were checked to determine whether they satisfied the selected constraints and whether the ranking reflected the similarity and rating scores.
-The recommendation results were also examined using average similarity scores and the ordering of the returned restaurants.
+This provides a direct validation that the hard filtering constraints are respected.
 
-22. VISUALIZATION
-A visualization was created to show the similarity scores of the recommended restaurants.
-The visualization provides a direct comparison of recommendation strength across the returned restaurants.
+19. HANDLING INVALID INPUTS
+
+Input validation was added to improve the robustness of the recommendation function.
+
+For example, the function checks that:
+
+• City is not empty.
+• Cuisine is not empty.
+• Price range is between 1 and 4.
+• Minimum rating is between 0 and 5.
+
+Invalid values result in meaningful ValueError messages instead of unexpected behavior.
+
+20. HANDLING NO-RESULT CASES
+
+The system also handles situations where no restaurant satisfies all the selected preferences.
+
+When no matching restaurant is found, the function displays an appropriate message and returns an empty DataFrame rather than producing an unexpected error.
+
+This improves the usability and robustness of the recommendation system.
+
+21. SIMILARITY ANALYSIS
+
+The similarity score represents how closely the restaurant content matches the user's textual preferences.
+
+Restaurants with higher similarity scores are more closely aligned with the requested cuisine and location information.
+
+The similarity score represents content similarity and should not be interpreted as a probability that the user will like a particular restaurant.
+
+22. RECOMMENDATION RESULT ANALYSIS
+
+The final recommendations are ranked using the Final Score, which combines content similarity and restaurant rating.
+
+A restaurant can achieve a high position in the recommendation list when it has strong alignment with the requested preferences and a relatively high rating.
+
+The final ranking therefore considers both preference matching and restaurant quality as represented by the available rating information.
+
+23. VISUALIZATION
+
+Visualizations were created to analyze the recommendation results and compare similarity and ranking scores.
+
+The visualization provides a direct view of the relative ranking of recommended restaurants.
 
 Figure: Top Restaurant Recommendations by Similarity / Final Score
 
-23. RESULTS
+24. RESULTS
+
 The task successfully implemented a content-based restaurant recommendation system.
+
 The complete workflow includes:
-• Data preparation
+
+• Restaurant data preparation
 • Text normalization
 • User preference handling
+• Input validation
 • Preference-based filtering
 • TF-IDF vectorization
-• Cosine similarity
-• Rating normalization
-• Final ranking
+• Cosine similarity calculation
+• Rating score normalization
+• Final ranking score calculation
 • Top N recommendation generation
 • Recommendation validation
-• Multiple test scenarios
+• No-result handling
+• Multiple preference testing
 
-The system can generate recommendations dynamically according to the user's selected preferences.
+The resulting system can generate restaurant recommendations dynamically according to the user's selected preferences.
 
-24. KEY FINDINGS
-The recommendation system demonstrates that available restaurant attributes can be used to build an explainable content-based recommendation approach.
-Cuisine and location information provide the main content representation for similarity-based ranking, while price range, minimum rating, and online delivery act as explicit user constraints.
-Combining similarity with restaurant rating provides a ranking mechanism that considers both user preference alignment and restaurant quality.
-The testing process also demonstrates that the system can handle both normal and highly restrictive user requests.
+25. KEY FINDINGS
 
-25. LIMITATIONS
-• The provided dataset does not contain historical user-restaurant interaction data such as clicks, bookings, purchases, or personalized user ratings.
-• Because actual user feedback data is unavailable, standard recommendation metrics such as precision@K, recall@K, or NDCG cannot be reliably calculated from the provided dataset alone.
-• The content-based similarity is based primarily on cuisine and location-related text.
-• Price range, minimum rating, and online delivery are applied as filtering constraints rather than being fully integrated into the TF-IDF similarity representation.
-• The ranking weights of 0.7 for similarity and 0.3 for rating are design choices used in this implementation.
-• Recommendations therefore represent content and preference matching rather than guaranteed user satisfaction.
+The recommendation system demonstrates that restaurant attributes can be used to build an explainable content-based recommendation approach.
 
-26. CONCLUSION
-A content-based restaurant recommendation system was developed using the restaurant dataset provided for the Cognifyz Technologies Machine Learning Internship.
-The system accepts user preferences such as city, cuisine, price range, minimum rating, and online delivery. Restaurants are first filtered using these preferences, after which the remaining restaurants are represented using TF-IDF and compared with the user's preferences using cosine similarity.
-A rating score was also calculated and combined with similarity to produce a final ranking score. The system returns the top requested number of restaurants based on the resulting ranking.
-Multiple sample user preference combinations were tested, including normal requests, optional preferences, restrictive requests, and no-result cases. The results were validated against the specified constraints.
-Overall, this task provided practical experience in content-based recommendation, text feature representation, TF-IDF, cosine similarity, filtering, ranking, testing, validation, and recommendation-system limitations.
+Cuisine and location-related information provide the primary basis for similarity matching, while price range, minimum rating, and online delivery are used as explicit filtering constraints.
 
-27. TECHNOLOGIES USED
-Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, Jupyter Notebook.
+Combining similarity with normalized restaurant rating allows the ranking to consider both preference alignment and restaurant rating.
 
-28. PROJECT OUTPUTS
-Notebook: 03_Task2_Restaurant_Recommendation.ipynb
-Important result files include task2_sample_recommendations.csv, task2_recommendation_summary.csv, task2_test_summary.csv, task2_evaluation_results.csv, and task2_final_sample_recommendations.csv.
-Important visualization files include task2_recommendation_similarity.png and task2_final_recommendations.png.
+The implementation also demonstrates that input validation and no-result handling can improve the reliability of a recommendation system.
 
-29. FINAL STATEMENT
-This task demonstrated the development of an explainable content-based restaurant recommendation system that converts restaurant content into numerical representations, matches user preferences, ranks suitable restaurants, and produces personalized recommendations based on the available dataset attributes.
+26. LIMITATIONS
+
+• The dataset does not contain historical user-restaurant interaction data such as clicks, bookings, purchases, or personalized feedback.
+• Standard personalized recommendation metrics such as precision@K, recall@K, or NDCG cannot be reliably calculated without suitable user interaction or relevance data.
+• The content similarity depends on the textual information available in the dataset.
+• Price range, minimum rating, and online delivery are primarily used as filtering constraints rather than being fully represented within the TF-IDF similarity calculation.
+• The 0.7 similarity and 0.3 rating weights are manually selected design parameters.
+• The system recommends restaurants based on the available dataset attributes and does not guarantee actual user satisfaction.
+• A content-based system may provide limited personalization because it does not learn from individual user history.
+
+27. CONCLUSION
+
+A content-based restaurant recommendation system was successfully developed using the restaurant dataset provided for the Cognifyz Technologies Machine Learning Internship.
+
+The system accepts user preferences including city, cuisine, price range, minimum rating, and online delivery. Restaurants are first filtered according to these constraints and then ranked using TF-IDF-based cosine similarity.
+
+A normalized rating score is combined with the similarity score using the formula:
+
+Final Score = 0.7 × Similarity Score + 0.3 × Rating Score
+
+The resulting restaurants are sorted according to their Final Score and the Top N recommendations are returned.
+
+The recommendation function also includes input validation and no-result handling, making the system more robust for different user inputs.
+
+Multiple preference scenarios were used to test the system and validate that the recommendations satisfy the specified constraints.
+
+Overall, this task provided practical experience in content-based recommendation systems, text preprocessing, TF-IDF, cosine similarity, preference-based filtering, ranking, input validation, testing, and interpretation of recommendation-system limitations.
+
+28. TECHNOLOGIES USED
+
+Python
+Pandas
+NumPy
+Matplotlib
+Seaborn
+Scikit-learn
+Jupyter Notebook
+
+29. PROJECT OUTPUTS
+
+Notebook:
+03_Task2_Restaurant_Recommendation.ipynb
+
+Important result files:
+task2_sample_recommendations.csv
+task2_recommendation_summary.csv
+task2_test_summary.csv
+task2_evaluation_results.csv
+task2_final_sample_recommendations.csv
+
+Important visualization files:
+task2_recommendation_similarity.png
+task2_final_recommendations.png
+
+30. FINAL STATEMENT
+
+This task demonstrated the development of an explainable content-based restaurant recommendation system that processes restaurant information, matches user preferences, calculates content similarity, incorporates restaurant ratings, ranks suitable restaurants, and generates Top N recommendations.
+
+The implementation provides a practical example of how machine learning and natural language processing techniques can be combined with rule-based filtering to create a useful restaurant recommendation system.

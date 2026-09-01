@@ -77,3 +77,16 @@ Cognifyz-ML-Internship/
 ├── README.md
 ├── requirements.txt
 └── .gitignore
+
+## Reports
+
+The project includes separate reports for each Cognifyz internship task:
+
+- Task 1 — Restaurant Rating Prediction
+- Task 2 — Restaurant Recommendation System
+- Task 3 — Cuisine Classification
+- Task 4 — Location-Based Analysis
+
+The reports contain the methodology, implementation approach,
+evaluation results, visualizations, key findings, and limitations
+for each task.
